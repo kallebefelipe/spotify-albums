@@ -1,13 +1,22 @@
 import React from 'react';
+import Jsx from './routes';
 import ReactDOM from 'react-dom';
-
-import App from './components/App';
+import setUpStore from './store/configureStore';
+import { Provider } from 'react-redux';
 
 import './assets/styles/style.sass';
 import './assets/styles/style.css';
 
+// const store = setUpStore();
+
+const Template = () => (
+  // <Provider store={store}>
+    <Jsx />
+  // </Provider>
+)
+
 ReactDOM.render(
-  React.createElement(App),
+  <Template />,
   document.getElementById('root'),
 );
 
