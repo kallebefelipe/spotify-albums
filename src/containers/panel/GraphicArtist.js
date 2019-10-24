@@ -10,3 +10,5 @@ class GraphicArtist extends React.Component {
       )
     }
 }
+
+export default GraphicArtist

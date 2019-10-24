@@ -1,5 +1,6 @@
 import Header from './Header';
 import React from 'react';
+import GraphicArtist from './panel/GraphicArtist'
 
 class SpotApp extends React.Component {
   constructor(props, context) {
@@ -11,7 +12,8 @@ class SpotApp extends React.Component {
 
   render() {
     return (
-      <Header />
+      // <Header />
+      <GraphicArtist />
     )
   }
 
