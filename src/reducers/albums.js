@@ -1,0 +1,18 @@
+import * as types from '../actionTypes';
+
+const albumsState = {
+  albums: []
+}
+
+const albumsReducer = (state=albumsState, action) => {
+  switch(action.type) {
+    case types.LOAD_ALBUMS_SUCCESS:
+      return {
+        albums: action.data
+      }
+      default:
+        return state
+  }
+}
+
+export default albumsReducer;
