@@ -1,5 +1,6 @@
 import React from 'react';
 import SpotApp from '../containers/SpotApp';
+import Album from '../containers/album/Album';
 import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 
 class Jsx extends React.Component {
@@ -7,12 +8,11 @@ class Jsx extends React.Component {
   render() {
 
     return (
-      <SpotApp />
-      // <BrowserRouter>
-      //   <Switch>
-      //     <Route exact path='/' component={SpotApp} />
-      //   </Switch>
-      // </BrowserRouter>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/' component={SpotApp} />
+        </Switch>
+      </BrowserRouter>
     )
   }
 
