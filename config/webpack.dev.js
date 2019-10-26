@@ -38,4 +38,7 @@ module.exports = merge (common, {
             filename: "[name].css",
         }),
     ],
+    watchOptions: {
+        poll: true
+    },
 });
