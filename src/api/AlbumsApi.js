@@ -4,7 +4,7 @@ class AlbumsApi {
   static getAllAlbums() {
     return fetch('https://api.spotify.com/v1/artists/4dpARuHxo51G3z768sgnrY/albums', {
       headers: {
-        'Authorization': 'Bearer BQBhX1nV1KUAUy1qjZySQWe6weXf7VZxEuNno1Yu1uS8htdOdViNF2154jD-0O0KVxW0JVx9RTZqRUxdtdc0JldMdvNif9lNdZD0NhQ_kW_SVEtYDUDFxDFzDp_NuXmKZ64kLD6p1cgI8AowwOFweNG45MbZYmdqpFfaSf2Z698ZVS-LkJ86Tsnjb-W8Hf5_Q2iTcLV86nRByfvoCOfWLbkKxoA8AEHyKs-QlWAizqjU8l9kP1sAht-J37xnYMgB4d9HWrX7gRZWmTs_8ak2nRQHoyNUtnXM',
+        'Authorization': 'Bearer BQAOSiBwe_k03VkS8nK9OcWSMWVRjVAzQ6b3nrZkYUT9KUpqTmOsaJRp_qSt2zlbhj21-gGZm5RPQ23cBIbJEcJFSDMbWp0fjVpkVfzTdkCKPOo9XC4-eLdV22FZbIEdw6LOXun1B2X-o9TXD5FtAnfnvmt-P3by1Fgb2d8equuU3MwWHgKnWd4ZZ3Yn46qcWqFMgVaoZzVm_nMunSwhUxcuVXKtyo5iCeeMk6Hndl4K6LB0C6qOy8-ydkd4tNVcj0G0-YB4ipFpDtG5TN3t0vIl--b1rWQs',
         'Content-Type': 'application/json',
         'Accept': 'application/json'
         },
@@ -12,6 +12,18 @@ class AlbumsApi {
         return responseData;
       });
     }
+
+    static getAlbum() {
+      return fetch('https://api.spotify.com/v1/albums/1ydnyXPdmHrWXqXDgtQCPf', {
+        headers: {
+          'Authorization': 'Bearer BQAOSiBwe_k03VkS8nK9OcWSMWVRjVAzQ6b3nrZkYUT9KUpqTmOsaJRp_qSt2zlbhj21-gGZm5RPQ23cBIbJEcJFSDMbWp0fjVpkVfzTdkCKPOo9XC4-eLdV22FZbIEdw6LOXun1B2X-o9TXD5FtAnfnvmt-P3by1Fgb2d8equuU3MwWHgKnWd4ZZ3Yn46qcWqFMgVaoZzVm_nMunSwhUxcuVXKtyo5iCeeMk6Hndl4K6LB0C6qOy8-ydkd4tNVcj0G0-YB4ipFpDtG5TN3t0vIl--b1rWQs',
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+          },
+        }).then((response) => response.json()).then((responseData) => {
+          return responseData;
+        });
+      }
 }
 
 export default AlbumsApi;

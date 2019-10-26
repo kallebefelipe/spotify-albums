@@ -1,16 +1,28 @@
 import AlbumsApi from '../api/AlbumsApi';
 import * as types from '../actionTypes';
 
-export function loadAlbumsSuccess(data) {
+export function loadAllAlbumsSuccess(data) {
   return {type: types.LOAD_ALBUMS_SUCCESS, data};
 }
 
-const loadAlbums = () => {
+export function loadAlbumSuccess(data) {
+  return {type: types.LOAD_ALBUMS_SUCCESS, data};
+}
+
+const loadAllAlbums = () => {
   return (dispatch) => {
     return AlbumsApi.getAllAlbums().then(albums => {
-      dispatch(loadAlbumsSuccess(albums));
+      dispatch(loadAllAlbumsSuccess(albums));
     });
   }
 };
 
-export { loadAlbums };
+const loadAlbum = () => {
+  return (dispatch) => {
+    return AlbumsApi.getAlbum().then(album => {
+      dispatch(loadAlbumSuccess(album));
+    });
+  }
+};
+
+export { loadAllAlbums, loadAlbum };
