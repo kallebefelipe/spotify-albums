@@ -9,9 +9,9 @@ export function loadAlbumSuccess(data) {
   return {type: types.LOAD_ALBUMS_SUCCESS, data};
 }
 
-const loadAllAlbums = () => {
+const loadAllAlbums = (id) => {
   return (dispatch) => {
-    return AlbumsApi.getAllAlbums().then(albums => {
+    return AlbumsApi.getAllAlbums(id).then(albums => {
       dispatch(loadAllAlbumsSuccess(albums));
     });
   }

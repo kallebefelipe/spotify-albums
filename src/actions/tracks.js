@@ -5,9 +5,9 @@ export function loadTracksSuccess(data) {
   return {type: types.LOAD_TRACKS_SUCCESS, data};
 }
 
-const loadTracks = () => {
+const loadTracks = (id) => {
   return (dispatch) => {
-    return TrackssApi.getAllTracks().then(albums => {
+    return TrackssApi.getAllTracks(id).then(albums => {
       dispatch(loadTracksSuccess(albums));
     });
   }
