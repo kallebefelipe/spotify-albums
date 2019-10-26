@@ -1,10 +1,10 @@
 
 class TracksApi {
 
-    static getAllTracks() {
-      return fetch('https://api.spotify.com/v1/albums/1ydnyXPdmHrWXqXDgtQCPf/tracks', {
+    static getAllTracks(id) {
+      return fetch(`https://api.spotify.com/v1/albums/${id}/tracks`, {
         headers: {
-          'Authorization': 'Bearer BQAOSiBwe_k03VkS8nK9OcWSMWVRjVAzQ6b3nrZkYUT9KUpqTmOsaJRp_qSt2zlbhj21-gGZm5RPQ23cBIbJEcJFSDMbWp0fjVpkVfzTdkCKPOo9XC4-eLdV22FZbIEdw6LOXun1B2X-o9TXD5FtAnfnvmt-P3by1Fgb2d8equuU3MwWHgKnWd4ZZ3Yn46qcWqFMgVaoZzVm_nMunSwhUxcuVXKtyo5iCeeMk6Hndl4K6LB0C6qOy8-ydkd4tNVcj0G0-YB4ipFpDtG5TN3t0vIl--b1rWQs',
+          'Authorization': 'Bearer BQB8TgdiUVKR-jFIN4djdXPU9KoksqXUcF0dPMiAzHox1bWbbFdApIfuVE79qV63gHwLV8tZlHA7mxoH6YNFJQg-FED0n9IKhiZBeAhCNv9PWGLV7tZjrDHyGlHn8YmuFVlVOOSSQ6f_d-dLHaSXnQuZ936e2McxnVe0pOO_cvnXu0m6sDZ6bMwBoo4_ZEgF3-zEiQ0ygnBZYz5x4LWX7CC2u_sMjXzz3w8npieUpIYGIb4Aw696uoYJZlz7guu-QQshI5lvp8s6ObnYaGz_56g3rmaIypZU',
           'Content-Type': 'application/json',
           'Accept': 'application/json'
           },
