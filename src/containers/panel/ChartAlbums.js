@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { loadAllAlbums } from '../../actions/albums';
 import TracksList from '../tracks/TracksList';
 import ReactApexChart from 'react-apexcharts';
+import ApexCharts from 'apexcharts';
 
 class ChartAlbums extends React.Component {
 
@@ -12,6 +13,7 @@ class ChartAlbums extends React.Component {
     this.state = {
       options: {
         chart: {
+          id: "id-chart",
           events: {
             dataPointSelection: {}
           }
@@ -33,6 +35,7 @@ class ChartAlbums extends React.Component {
         },
         xaxis: {
           categories: [],
+          tickPlacement: 'between'
         },
         fill: {
           opacity: 1
@@ -73,7 +76,8 @@ class ChartAlbums extends React.Component {
           name: 'Calvin Harris',
           id: '7CajNmpbOovFoOoasH2HaY'
         },
-      ]
+      ],
+      prevOptions: undefined
     }
 
     this.dataPointSelection = this.dataPointSelection.bind(this);
@@ -109,21 +113,36 @@ class ChartAlbums extends React.Component {
         categories.push(item.year);
       });
 
+      var chartEl = document.getElementById("id-chart");
+      if (chartEl != null && this.state.prevOptions.xaxis.categories != categories) {
+        this.state.options.xaxis.categories = categories;
+        this.state.series[0].data = serie;
+        ApexCharts.exec("id-chart", "updateOptions", this.state.options);
+        ApexCharts.exec("id-chart", "updateSeries", this.state.series);
+
+        // var chart = new ApexCharts(chartEl, this.state.prevOptions);
+        // chart.updateOptions(this.state.options);
+        // chart.updateSeries(this.state.series);
+        // chart.render();
+      }
       this.state.options.xaxis.categories = categories;
       this.state.series[0].data = serie;
       this.state.options.chart.events.dataPointSelection = this.dataPointSelection;
+
 
     }
   }
 
   updateArtist(e) {
     this.props.fetchAlbums(e.target.value);
+    var index = e.target.selectedIndex;
+    this.state.series[0].name = e.nativeEvent.target[index].text
   }
 
   render() {
     this.mountData();
-    console.log(this.state.series)
-    debugger
+    this.state.prevOptions = this.state.options;
+
     if (this.props.albums.items != undefined) {
       return (
 
@@ -149,7 +168,7 @@ class ChartAlbums extends React.Component {
           <div className="app-div" id="chart">
             <h1 className="title">PAINEL DE ÁLBUNS</h1>
             <div id="chart-album">
-              <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height="350" />
+              <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height="350" id="id-chart"/>
             </div>
           </div>
           <div className="app-div" id="tracks">
