@@ -1,9 +1,7 @@
 import "regenerator-runtime/runtime";
 import {createStore, combineReducers, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-// import sagaMiddleware from 'redux-saga';
 import albumsReducer from '../reducers/albums';
-import albumReducer from '../reducers/album';
 import tracksReducer from '../reducers/tracks';
 import root from '../sagas';
 
