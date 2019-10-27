@@ -15,7 +15,6 @@ class Tracks extends React.Component {
   }
 
   componentDidMount() {
-    console.log('TrackList componentDidMount')
     this.props.fetchTracks(this.props.album.id);
     this.state.prevProps = this.props.album;
   }
