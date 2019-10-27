@@ -196,7 +196,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchAlbums: (id) => {
-      dispatch(loadAllAlbums(id));
+      dispatch({type: "LOAD_ALBUMS_REQUEST", payload: {id}})
     }
   }
 }
