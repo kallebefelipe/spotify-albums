@@ -5,39 +5,43 @@ import { take, call, put, takeEvery, takeLatest, fork, all } from 'redux-saga/ef
 import * as types from '../actionTypes';
 import { debuglog } from "util";
 
+function* loadAlbum(action) {
+  if (action != undefined) {
+    const albums= yield call(AlbumsApi.getAlbum, action.payload.id);
+    yield put({ type: types.LOAD_ALBUM_SUCCESS, payload: albums });
+  }
+}
+
 function* loadAllAlbums(action) {
   if (action != undefined) {
-    debugger
-    console.log(action)
-    // yield put({ type: types.LOAD_ALBUMS_SUCCESS });
     const albums = yield call(AlbumsApi.getAllAlbums, action.payload.id);
-    console.log(albums)
     yield put({ type: types.LOAD_ALBUMS_SUCCESS, payload: albums });
   }
 }
 
 function* loadTracks(action) {
   if (action != undefined) {
-    debugger
+    const tracks = yield call(TrackssApi.getAllTracks, action.payload.id);
+    yield put({ type: types.LOAD_TRACKS_SUCCESS, payload: tracks });
   }
-  // yield put({ type: types.LOAD_TRACKS_SUCCESS });
-  // const traks = yield call(TrackssApi.getAllTracks, action.payload);
-  // yield put({ type: types.LOAD_TRACKS_SUCCESS, payload: traks });
 }
-
-// Watchs
 
 function* watchloadAllAlbums() {
   yield takeEvery(types.LOAD_ALBUMS_REQUEST, loadAllAlbums);
 }
 
+function* watchloadAlbum() {
+  yield takeEvery(types.LOAD_ALBUM_REQUEST, loadAlbum);
+}
+
 function* watchLoadTracks() {
-  yield takeEvery(types.LOAD_TRACKS_SUCCESS, loadTracks);
+  yield takeEvery(types.LOAD_TRACKS_REQUEST, loadTracks);
 }
 
 export default function* root() {
   yield all([
     fork(watchLoadTracks),
-    fork(watchloadAllAlbums)
+    fork(watchloadAllAlbums),
+    fork(watchloadAlbum)
   ])
 }

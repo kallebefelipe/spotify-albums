@@ -8,7 +8,6 @@ import './assets/styles/style.sass';
 import './assets/styles/style.css';
 
 const store = setUpStore();
-
 const Template = () => (
   <Provider store={store}>
     <Jsx />
