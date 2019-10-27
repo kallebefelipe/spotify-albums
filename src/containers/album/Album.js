@@ -16,7 +16,6 @@ class Album extends React.Component {
 
 
   render() {
-    debugger
     return (
       'Albums Info'
     );

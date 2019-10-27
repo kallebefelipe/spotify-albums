@@ -1,7 +1,6 @@
 import React from 'react';
 import TrackListRow from './TrackListRow';
 import { connect } from 'react-redux';
-import { loadTracks } from '../../actions/tracks';
 
 class Tracks extends React.Component {
 
@@ -79,7 +78,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchTracks: (id) => {
-      dispatch(loadTracks(id));
+      dispatch({type: "LOAD_TRACKS_REQUEST", payload: {id}})
     }
   }
 }
