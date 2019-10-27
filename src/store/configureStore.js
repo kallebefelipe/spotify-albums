@@ -22,8 +22,4 @@ const setUpStore = () => {
   return store;
 };
 
-// sagaMiddleware.run(loadAllAlbums)
-// sagaMiddleware.run(loadAlbum)
-
-
 export default setUpStore;
