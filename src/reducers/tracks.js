@@ -8,7 +8,7 @@ const tracksReducer = (state=tracksState, action) => {
   switch(action.type) {
     case types.LOAD_TRACKS_SUCCESS:
       return {
-        tracks: action.data
+        tracks: action.payload
       }
     default:
       return state

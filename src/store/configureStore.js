@@ -1,20 +1,22 @@
-
+import "regenerator-runtime/runtime";
 import {createStore, combineReducers, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 import albumsReducer from '../reducers/albums';
-import albumReducer from '../reducers/album';
 import tracksReducer from '../reducers/tracks';
+import root from '../sagas';
+
+const sagaMiddleware = createSagaMiddleware()
 
 const setUpStore = () => {
   const store = createStore(
     combineReducers({
       albumsReducer,
-      albumReducer,
-      tracksReducer
+      tracksReducer,
     }),
-    applyMiddleware(thunkMiddleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(sagaMiddleware),
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
   );
+  sagaMiddleware.run(root)
   return store;
 };
 

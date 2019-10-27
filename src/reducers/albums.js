@@ -9,7 +9,7 @@ const albumsReducer = (state=albumsState, action) => {
   switch(action.type) {
     case types.LOAD_ALBUMS_SUCCESS:
       return {
-        albums: action.data
+        albums: action.payload
       }
     default:
       return state
