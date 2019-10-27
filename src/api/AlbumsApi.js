@@ -4,7 +4,7 @@ class AlbumsApi {
   static getAllAlbums(id) {
     return fetch(`https://api.spotify.com/v1/artists/${id}/albums`, {
       headers: {
-        'Authorization': 'Bearer BQAXZPkgry9jbpMt40Nf2Z0QB7KXmu3kFitb3sSQ4W-PA56xmW8XaHduZ_zQg8p8Ri7p5AjNpuv1vnVZiXtVdLU0rlr532kh0ChVRcJqHjyv2MlmVzLzVNfG-U1QchQ2AdbwRY1127uV2pfi1KP6FcwGfuZSXRyiqBSPgncP-_oqZf6MD6rUYhzd9MoS_sH4pHmb0E4AaUzSNSLPeuCpi7b11WIxQvkjWBNk1p0UkNUBwj0i71Kg-PMNsltHBbh4Got8mlan1NRyCJpqHMyuxlw9SMnCxVph',
+        'Authorization': 'Bearer BQCXGri4PBXCWi4akexAqSiFxlRGRuteuEjqqzKjC7Z-SNw6F-aKsGW_pBvIa20ZBrHYvDEBVEXKGKw-8DyHYkpKsPxTzMDk9uN19J5Hqtnq8oJgjnGMRNz6nUd9aOtTQY2COw-yJcNb8NpLPAGm9zSHSFKhMpzSCNDFYOnRAO_3FYvhm7KJStIs6zJ_Grfg8hMEdiaXcyRx7PdhOQgkHvCmDKw0l3hZDm53j2JimgVoGL4fw0XDoRJHu10lAGJkkcNb5QGBXpHHAx3axRiBH8yrlBiegB4t',
         'Content-Type': 'application/json',
         'Accept': 'application/json'
         },
