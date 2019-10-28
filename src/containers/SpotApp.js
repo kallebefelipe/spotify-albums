@@ -1,6 +1,6 @@
-import Header from './Header';
 import React from 'react';
-import ChartAlbums from './panel/ChartAlbums'
+import ChartAlbums from './panel/ChartAlbums';
+import { connect } from 'react-redux';
 
 class SpotApp extends React.Component {
   constructor(props, context) {
@@ -8,6 +8,10 @@ class SpotApp extends React.Component {
     this.state = {
       data: undefined,
     };
+  }
+
+  componentDidMount() {
+    this.props.fetchAuth();
   }
 
   render() {
@@ -18,4 +22,12 @@ class SpotApp extends React.Component {
 
 }
 
-export default SpotApp;
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchAuth: () => {
+      dispatch({type: "LOGIN_CLIENT_REQUEST"})
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SpotApp);

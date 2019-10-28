@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loadAlbum } from '../../actions/albums';
+import { loadAlbum } from '../../sagas';
 
 class Album extends React.Component {
 

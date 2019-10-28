@@ -1,9 +1,9 @@
 import "regenerator-runtime/runtime";
 import TrackssApi from '../api/TracksApi';
 import AlbumsApi from '../api/AlbumsApi';
-import { take, call, put, takeEvery, takeLatest, fork, all } from 'redux-saga/effects';
+import AuthApi from '../api/AuthApi';
+import { call, put, takeEvery, fork, all } from 'redux-saga/effects';
 import * as types from '../actionTypes';
-import { debuglog } from "util";
 
 function* loadAlbum(action) {
   if (action != undefined) {
@@ -26,6 +26,13 @@ function* loadTracks(action) {
   }
 }
 
+function* authClient(action) {
+  if (action != undefined) {
+    const response = yield call(AuthApi.loginUser);
+    yield put({ type: types.LOGIN_CLIENT_SUCESS, payload: response });
+  }
+}
+
 function* watchloadAllAlbums() {
   yield takeEvery(types.LOAD_ALBUMS_REQUEST, loadAllAlbums);
 }
@@ -38,10 +45,15 @@ function* watchLoadTracks() {
   yield takeEvery(types.LOAD_TRACKS_REQUEST, loadTracks);
 }
 
+function* watchAuthClient() {
+  yield takeEvery(types.LOGIN_CLIENT_REQUEST, authClient);
+}
+
 export default function* root() {
   yield all([
     fork(watchLoadTracks),
     fork(watchloadAllAlbums),
-    fork(watchloadAlbum)
+    fork(watchloadAlbum),
+    fork(watchAuthClient)
   ])
 }

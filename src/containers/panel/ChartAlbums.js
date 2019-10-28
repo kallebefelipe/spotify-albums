@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loadAllAlbums } from '../../actions/albums';
 import TracksList from '../tracks/TracksList';
 import ReactApexChart from 'react-apexcharts';
 import ApexCharts from 'apexcharts';
