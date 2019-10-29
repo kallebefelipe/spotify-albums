@@ -1,5 +1,4 @@
 body {
-
   color: #fff;
   background-color: #f3f3f3;
   font-family: 'Oxygen', sans-serif;
@@ -25,7 +24,7 @@ input {
   border: solid 0px rgb(230, 230, 230);
   border-bottom: solid 1px rgb(133, 133, 133);
   width: 60%;
-  padding-left: 5%;
+  padding: 3%;
 
 }
 
@@ -88,6 +87,7 @@ h1.title {
 }
 
 .container {
+  position: fixed;
   flex-wrap: wrap;
   color: rgb(90, 90, 90);
   display: flex;
@@ -95,7 +95,7 @@ h1.title {
   margin-right: 2%;
 
   margin-top: 3%;
-  max-height: 70%;
+  max-height: 68%;
   padding-top: 7%;
   padding-left: 1%;
   overflow: auto;
@@ -127,7 +127,20 @@ h5#track-h2 {
 h5#tr-name {
   color: rgb(148, 148, 148);
   margin-top: 2%;
-  margin-left: 50%;
+  margin-left: 62%;
+}
+
+.info-track {
+  display: flex;
+}
+
+#icon-explicit {
+  margin-left: 40%
+}
+
+#img-explicit {
+  height: 30px;
+  width: 30px;
 }
 
 .container-track {
