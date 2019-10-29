@@ -14,9 +14,9 @@ class AlbumsApi {
       });
     }
 
-    static getAlbum() {
+    static getAlbum(id) {
       var token = localStorage.getItem("token")
-      return fetch('https://api.spotify.com/v1/albums/1ydnyXPdmHrWXqXDgtQCPf', {
+      return fetch(`https://api.spotify.com/v1/albums/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
