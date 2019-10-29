@@ -1,8 +1,7 @@
 import * as types from '../actionTypes';
 
 const authState = {
-  token: localStorage.getItem("token"),
-  registerFail: false
+  token: localStorage.getItem("token")
 }
 
 const userInfo = (action) => {

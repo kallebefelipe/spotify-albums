@@ -1,8 +1,7 @@
 import * as types from '../actionTypes';
 
 const albumsState = {
-  albums: [],
-  tracks: []
+  albums: []
 }
 
 const albumsReducer = (state=albumsState, action) => {
