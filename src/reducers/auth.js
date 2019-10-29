@@ -14,7 +14,7 @@ const userInfo = (action) => {
 const authReducer = (state= authState, action) => {
   switch(action.type) {
     case types.LOGIN_CLIENT_SUCCESS:
-      localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("token", action.payload.access_token);
       return userInfo(action);
     default:
         return state

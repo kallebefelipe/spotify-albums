@@ -14,7 +14,7 @@ function* loadAlbum(action) {
 
 function* loadAllAlbums(action) {
   if (action != undefined) {
-    const albums = yield call(AlbumsApi.getAllAlbums, action.payload.id);
+    const albums = yield call(AlbumsApi.getAllAlbums, action.payload);
     yield put({ type: types.LOAD_ALBUMS_SUCCESS, payload: albums });
   }
 }
@@ -29,7 +29,7 @@ function* loadTracks(action) {
 function* authClient(action) {
   if (action != undefined) {
     const response = yield call(AuthApi.loginUser);
-    yield put({ type: types.LOGIN_CLIENT_SUCESS, payload: response });
+    yield put({ type: types.LOGIN_CLIENT_SUCCESS, payload: response });
   }
 }
 
@@ -51,9 +51,9 @@ function* watchAuthClient() {
 
 export default function* root() {
   yield all([
+    fork(watchAuthClient),
     fork(watchLoadTracks),
     fork(watchloadAllAlbums),
     fork(watchloadAlbum),
-    fork(watchAuthClient)
   ])
 }

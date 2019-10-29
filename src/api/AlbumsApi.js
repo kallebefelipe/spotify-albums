@@ -1,10 +1,11 @@
 
 class AlbumsApi {
 
-  static getAllAlbums(id) {
-    return fetch(`https://api.spotify.com/v1/artists/${id}/albums`, {
+  static getAllAlbums(payload) {
+    var token = localStorage.getItem("token")
+    return fetch(`https://api.spotify.com/v1/artists/${payload.id}/albums`, {
       headers: {
-        'Authorization': 'Bearer BQChB0jM7BIjtvzgN9M27mSnhhk80gX6F9X2LSqSA1Gnat1ju88Wq8FzuxnSw1exq2MUCQC0wVJo0058_uc',
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
         'Accept': 'application/json'
         },
@@ -14,9 +15,10 @@ class AlbumsApi {
     }
 
     static getAlbum() {
+      var token = localStorage.getItem("token")
       return fetch('https://api.spotify.com/v1/albums/1ydnyXPdmHrWXqXDgtQCPf', {
         headers: {
-          'Authorization': 'Bearer BQChB0jM7BIjtvzgN9M27mSnhhk80gX6F9X2LSqSA1Gnat1ju88Wq8FzuxnSw1exq2MUCQC0wVJo0058_uc',
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
           'Accept': 'application/json'
           },
