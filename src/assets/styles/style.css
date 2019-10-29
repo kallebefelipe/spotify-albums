@@ -41,6 +41,70 @@ h1.title {
   top: 58%;
 }
 
+#album {
+  display: table;
+  height: 55%;
+  width: 60%;
+  margin-top: 15%;
+}
+
+#div-album {
+  display: flex;
+  height: 100%
+}
+
+#head-album {
+  width: 30%;
+  height: 60%;
+  color: rgb(100, 100, 100);
+  margin-top: 10%;
+  margin-left: 20%;
+}
+
+#tracks-album {
+  margin-left: 20%;
+  height: 100%;
+  width: 80%;
+}
+
+.container-album {
+  max-height: 400px;
+  overflow: auto;
+  padding-top: 10%;
+}
+
+#tracks-album {
+  margin-left: 20%;
+  height: 100%;
+  width: 80%;
+}
+
+.container-head {
+  display: flex;
+}
+
+#tr-album-name {
+  color: rgb(148, 148, 148);
+  margin-top: 4%;
+  margin-left: 10%;
+  max-width: 60%;
+}
+
+.voltar {
+  color: rgb(148, 148, 148);
+  text-align: center;
+  margin: 2%;
+  margin-left: 33%;
+}
+
+
+#n-track {
+  color: rgb(148, 148, 148);
+  margin-top: 4%;
+  margin-left: 70%;
+  position: fixed;
+}
+
 #chart-album {
   color: rgb(90, 90, 90);
   margin-left: 5%;
@@ -113,6 +177,21 @@ h1.title {
   transform: translate(-50%, -50%);
   border: solid 1px rgb(230, 230, 230);
   border-radius:5px 5px 5px 5px;
+  cursor: pointer;
+}
+
+#track-album {
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  position: relative;
+  width: 80%;
+  top: 15%;
+  left: 10%;
+  margin-left: 40%;
+  margin-top: 2%;
+  transform: translate(-50%, -50%);
+  border: solid 1px rgb(230, 230, 230);
+  border-radius: 5px 5px 5px 5px;
 }
 
 .container-head {
@@ -130,17 +209,34 @@ h5#tr-name {
   margin-left: 62%;
 }
 
+#tracks-album {
+  margin-left: 20%;
+  height: 100%;
+  width: 80%;
+}
+
 .info-track {
   display: flex;
 }
 
 #icon-explicit {
-  margin-left: 40%
+  margin-left: 40%;
+}
+
+#h-album {
+  text-align: center;
+  margin: 2%;
 }
 
 #img-explicit {
   height: 30px;
   width: 30px;
+}
+
+#img-album {
+  margin-left: 12%;
+  height: 70%;
+  width: 70%;
 }
 
 .container-track {
