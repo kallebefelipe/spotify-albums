@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { loadAlbum } from '../../sagas';
+import {Link} from "react-router-dom";
 
 class Album extends React.Component {
 
@@ -9,29 +8,40 @@ class Album extends React.Component {
     this.state = {}
   }
 
-  componentDidMount() {
-    this.props.fetchAlbum();
-  }
-
   render() {
+    console.log(this.props.location.state)
+    var state = this.props.location.state;
     return (
-      'Albums Info'
+      <div class="app-div" id="album">
+
+      <div id="div-album">
+
+        <div id="head-album">
+
+          <div class="head-album">
+              <img id='img-album' src={state.images[0].url} alt="Explicit" />
+              <h5 id='h-album'>{state.name}</h5>
+              <h5 id='h-album'>{state.artists[0].name}</h5>
+              <h5 id='h-album'>{state.release_date.split('-')[0]} - {state.total_tracks} Song</h5>
+              <Link to='/' className="voltar">Voltar</Link>
+          </div>
+        </div>
+          <div id="tracks-album">
+            <div class="container-album">
+            {state.tracks.items.map(track =>
+              <div id="track-album">
+                <div class="container-head">
+                  <h5 id='tr-album-name'>{track.name}</h5>
+                    <h5 id='n-track'>N° {track.track_number}</h5>
+                </div>
+              </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    album: state.albumReducer.album
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchAlbum: () => {
-      dispatch(loadAlbum());
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Album);
+export default Album;
