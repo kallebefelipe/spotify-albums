@@ -11,6 +11,7 @@ class Jsx extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact path='/' component={SpotApp} />
+          <Route exact path='/album' component={Album} />
         </Switch>
       </BrowserRouter>
     )
