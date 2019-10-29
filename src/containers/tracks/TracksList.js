@@ -13,8 +13,9 @@ class Tracks extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchTracks(this.props.album.id);
+    this.props.fetchAlbum(this.props.album.id);
     this.state.prevProps = this.props.album;
   }
 
@@ -46,7 +47,6 @@ class Tracks extends React.Component {
   }
 
   render() {
-
     if (this.props.tracks.items != undefined) {
       if (this.state.filtered.length == 0) {
         this.state.filtered = this.props.tracks.items;
@@ -57,7 +57,7 @@ class Tracks extends React.Component {
             <input type="text" onChange={this.handleChange} className="input" placeholder="Buscar música" />
           </div>
           <div className="container">
-            {this.state.filtered.map(track => <TrackListRow  key={track.id} track={track}/>)}
+            {this.state.filtered.map(track => <TrackListRow  key={track.id} track={track} album={this.props.album_info}/>)}
           </div>
         </div>
       );
@@ -71,7 +71,8 @@ class Tracks extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    tracks: state.tracksReducer.tracks
+    tracks: state.tracksReducer.tracks,
+    album_info: state.albumReducer.album
   }
 }
 
@@ -79,6 +80,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchTracks: (id) => {
       dispatch({type: "LOAD_TRACKS_REQUEST", payload: {id}})
+    },
+    fetchAlbum: (id) => {
+      dispatch({type: "LOAD_ALBUM_REQUEST", payload: {id}})
     }
   }
 }

@@ -1,16 +1,32 @@
 import React from 'react';
 import icon from '../../assets/images/explicit.png'
-
+import { Redirect} from 'react-router';
 
 class TrackListRow extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {};
+    this.state = {
+      redirect: false
+    };
+  }
+
+  redirectAlbum(e) {
+    this.setState({
+      redirect: true
+    });
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={{
+        pathname: '/album',
+        state: this.props.album
+        }}
+      />
+    }
+
     return (
-      <div id="track">
+      <div id="track" onClick={(e) => {this.redirectAlbum(e)}}>
         <div className="container-head">
             <h5 id="track-h2">N° {this.props.track.disc_number}</h5>
             <h5 id="tr-name">Track {this.props.track.track_number}</h5>

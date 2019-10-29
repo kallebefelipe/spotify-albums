@@ -161,9 +161,6 @@ class ChartAlbums extends React.Component {
                   <p>{this.state.value}</p>
                 </div>
               </div>
-              <div id="year">
-                  Year
-              </div>
             </div>
           </div>
           <div className="app-div" id="chart">
