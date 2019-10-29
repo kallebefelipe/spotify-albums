@@ -10,24 +10,11 @@ class SpotApp extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.props.fetchAuth();
-  }
-
   render() {
     return (
       <ChartAlbums />
     )
   }
-
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchAuth: () => {
-      dispatch({type: "LOGIN_CLIENT_REQUEST"})
-    }
-  }
-}
-
-export default connect(null, mapDispatchToProps)(SpotApp);
+export default SpotApp;

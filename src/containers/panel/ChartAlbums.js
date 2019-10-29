@@ -37,7 +37,8 @@ class ChartAlbums extends React.Component {
           tickPlacement: 'between'
         },
         fill: {
-          opacity: 1
+          opacity: 1,
+          colors: []
         },
         tooltip: {
           y: {
@@ -57,23 +58,28 @@ class ChartAlbums extends React.Component {
       artists: [
         {
           name: 'Adele',
-          id: '4dpARuHxo51G3z768sgnrY'
+          id: '4dpARuHxo51G3z768sgnrY',
+          color: '#F5CA8C'
         },
         {
           name: 'Eminem',
-          id: '7dGJo4pcD2V6oG8kP0tJRR'
+          id: '7dGJo4pcD2V6oG8kP0tJRR',
+          color: '#8CD7F5'
         },
         {
           name: 'Ed Sheeran',
-          id: '6eUKZXaKkcviH0Ku9w2n3V'
+          id: '6eUKZXaKkcviH0Ku9w2n3V',
+          color: '#8EF764'
         },
         {
           name: 'Maroon 5',
-          id: '04gDigrS5kc9YWfZHwBETP'
+          id: '04gDigrS5kc9YWfZHwBETP',
+          color: '#DA64F7'
         },
         {
           name: 'Calvin Harris',
-          id: '7CajNmpbOovFoOoasH2HaY'
+          id: '7CajNmpbOovFoOoasH2HaY',
+          color: '#F76464'
         },
       ],
       prevOptions: undefined
@@ -83,6 +89,7 @@ class ChartAlbums extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchAuth();
     this.props.fetchAlbums(this.state.artists[0].id);
   }
 
@@ -118,17 +125,11 @@ class ChartAlbums extends React.Component {
         this.state.series[0].data = serie;
         ApexCharts.exec("id-chart", "updateOptions", this.state.options);
         ApexCharts.exec("id-chart", "updateSeries", this.state.series);
-
-        // var chart = new ApexCharts(chartEl, this.state.prevOptions);
-        // chart.updateOptions(this.state.options);
-        // chart.updateSeries(this.state.series);
-        // chart.render();
       }
       this.state.options.xaxis.categories = categories;
+      this.state.options.fill.colors = ['#F5CA8C'];
       this.state.series[0].data = serie;
       this.state.options.chart.events.dataPointSelection = this.dataPointSelection;
-
-
     }
   }
 
@@ -136,6 +137,7 @@ class ChartAlbums extends React.Component {
     this.props.fetchAlbums(e.target.value);
     var index = e.target.selectedIndex;
     this.state.series[0].name = e.nativeEvent.target[index].text
+    this.state.options.fill.colors = [this.state.artists[index].color];
   }
 
   render() {
@@ -196,6 +198,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchAlbums: (id) => {
       dispatch({type: "LOAD_ALBUMS_REQUEST", payload: {id}})
+    },
+    fetchAuth: () => {
+      dispatch({type: "LOGIN_CLIENT_REQUEST"})
     }
   }
 }
