@@ -155,7 +155,7 @@ class ChartAlbums extends React.Component {
                 <div>
                   <select id="artist-drop"  onChange={(e) => {this.updateArtist(e)}}>
                   {this.state.artists.map(
-                    artist => <option value={artist.id}>{artist.name}</option>)}
+                    artist => <option value={artist.id} key={artist.id}>{artist.name}</option>)}
                   </select>
                   <p></p>
                   <p>{this.state.value}</p>

@@ -34,7 +34,16 @@ class TrackListRow extends React.Component {
         <div className="container-track">
             <h5 id="tr-music">{this.props.track.name}</h5>
             <div className="info-track">
-              <h5 id="tr-pop">Alta popularidade</h5>
+              {(() => {
+                var pop = this.props.album.popularity;
+                switch (true) {
+                  case (0 <=pop && pop < 35):   return <h5 id="tr-pop">Baixa popularidade</h5>;
+                  case (35 <= pop && pop < 65): return <h5 id="tr-pop">Média popularidade</h5>;
+                  case (pop > 56):  return <h5 id="tr-pop">Alta popularidade</h5>;
+                  default:      return <h5 id="tr-pop">Sem popularidade</h5>;
+                }
+              })()}
+
               {this.props.track.explicit &&
               <div id='icon-explicit'><img id='img-explicit' src={icon} alt="Explicit" /></div>}
             </div>

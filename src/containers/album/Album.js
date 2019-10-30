@@ -9,7 +9,6 @@ class Album extends React.Component {
   }
 
   render() {
-    console.log(this.props.location.state)
     var state = this.props.location.state;
     return (
       <div class="app-div" id="album">
