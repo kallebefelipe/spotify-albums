@@ -19,3 +19,5 @@ flask run
 ### Rodando aplicação
 
 npm start
+
+http://localhost:3042
